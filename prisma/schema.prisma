@@ -5,8 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -88,12 +87,11 @@ model Account {
    category      String
    maximum       Decimal
    theme         String
-   period        String
    createdAt     DateTime        @default(now())
    updatedAt     DateTime        @updatedAt
 
    account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
 
-   @@unique([accountId, category, period])
+   @@unique([accountId, category])
  }
 

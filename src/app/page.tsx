@@ -7,6 +7,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100 sm:text-5xl">
           Welcome to Smart Budgeter
         </h1>
+
       </main>
     </div>
   );

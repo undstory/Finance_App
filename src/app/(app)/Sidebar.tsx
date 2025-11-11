@@ -1,4 +1,22 @@
+"use client"
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+    const navigationItems = [
+        { name: 'Overview', href: '/overview', icon: '/assets/images/icon-nav-overview.svg' },
+        { name: 'Transactions', href: '/transactions', icon: '/assets/images/icon-nav-transactions.svg'},
+        { name: 'Budgets', href: '/budgets', icon: '/assets/images/icon-nav-budgets.svg' },
+        { name: 'Pots', href: '/pots', icon: '/assets/images/icon-nav-pots.svg' },
+        { name: 'Recurring Bills', href: '/recurring-bills', icon: '/assets/images/icon-nav-recurring-bills.svg' },
+    ]
+
 export default function Sidebar () {
+    const pathname = usePathname();
+
+    const base = "flex items-center gap-4 rounded-r-lg leading-1.5 py-(--space-200) \
+        pl-[calc(var(--space-200)+32px)] transition-all -ml-12 mr-6"
+
     return (
              <aside
                 className={[
@@ -9,14 +27,29 @@ export default function Sidebar () {
                     "pl-(--space-400)",
                 ].join(" ")}
              >
-                <div className="text-(--text-1-size)">finance</div>
-                <nav className="space-y-1 px-2">
-                    <a className="block rounded px-3 py-2 hover:bg-neutral-800" href="/overview">Overview</a>
-                    <a className="block rounded px-3 py-2 hover:bg-neutral-800" href="/transactions">Transactions</a>
-                    <a className="block rounded px-3 py-2 hover:bg-neutral-800" href="/budgets">Budgets</a>
-                    <a className="block rounded px-3 py-2 hover:bg-neutral-800" href="/pots">Pots</a>
-                    <a className="block rounded px-3 py-2 hover:bg-neutral-800" href="/recurring-bills">Recuring bills</a>
-
+                <Image src="/assets/images/logo-large.svg" alt="finance logo" width={121} height={21}
+                    className="
+                    pb-(--space-500)"
+                />
+                <nav
+                    className="pt-(--space-300)
+                        text-(--text-3-size)">
+                    {
+                    navigationItems.map((item) => {
+                        const isActive = pathname === item.href;
+                    return (
+                        <Link key={item.name} href={item.href} className={
+                            `${base} ${
+                            isActive
+                                ? "bg-(--white) text-(--grey-900)"
+                                : "text-(--grey-300) bg-transparent"
+                            } transition-colors`}
+                        >
+                            {item.icon && <Image src={item.icon} alt={`${item.name} icon`} width={24} height={24}  />}
+                            {item.name}
+                        </Link>
+                    )})
+                }
                 </nav>
             </aside>
     )

@@ -15,7 +15,7 @@ export default function Sidebar () {
     const pathname = usePathname();
 
     const base = "flex items-center gap-4 rounded-r-lg leading-1.5 py-(--space-200) \
-        pl-[calc(var(--space-200)+32px)] transition-all -ml-12 mr-6"
+        pl-[calc(var(--space-200)+32px)] transition-all -ml-12 mr-6";
 
     return (
              <aside
@@ -39,13 +39,14 @@ export default function Sidebar () {
                         const isActive = pathname === item.href;
                     return (
                         <Link key={item.name} href={item.href} className={
-                            `${base} ${
+                            `${base} group ${
                             isActive
                                 ? "bg-(--white) text-(--grey-900)"
-                                : "text-(--grey-300) bg-transparent"
+                                : "text-(--grey-300) bg-transparent hover:text-(--grey-100)"
                             } transition-colors`}
                         >
-                            {item.icon && <Image src={item.icon} alt={`${item.name} icon`} width={24} height={24}  />}
+                            <Image src={item.icon} alt={`${item.name} icon`}  className={`transition-all ${isActive ? "" : "group-hover:brightness-0 group-hover:invert"}`}
+                             width={24} height={24}  />
                             {item.name}
                         </Link>
                     )})

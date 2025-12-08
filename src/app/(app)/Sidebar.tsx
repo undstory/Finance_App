@@ -19,21 +19,12 @@ export default function Sidebar () {
 
     return (
              <aside
-                className={[
-                    "h-dvh sticky top-0",
-                    "bg-(--grey-900) text-(--white)",
-                    "border-r border-(--grey-900)",
-                    "pt-(--space-500)",
-                    "pl-(--space-400)",
-                ].join(" ")}
+                className="h-dvh sticky top-0 bg-(--grey-900) text-(--white) border-r border-(--grey-900) pt-(--space-500) pl-(--space-400)"
              >
-                <Image src="/assets/images/logo-large.svg" alt="finance logo" width={121} height={21}
-                    className="
-                    pb-(--space-500)"
+                <Image src="/assets/images/logo-large.svg" alt="finance logo" width={121} height={21} className="pb-(--space-500)"
                 />
                 <nav
-                    className="pt-(--space-300)
-                        text-(--text-3-size)">
+                    className="pt-(--space-300) text-(--text-3-size)">
                     {
                     navigationItems.map((item) => {
                         const isActive = pathname === item.href;
@@ -45,7 +36,8 @@ export default function Sidebar () {
                                 : "text-(--grey-300) bg-transparent hover:text-(--grey-100)"
                             } transition-colors`}
                         >
-                            <Image src={item.icon} alt={`${item.name} icon`}  className={`transition-all ${isActive ? "" : "group-hover:brightness-0 group-hover:invert"}`}
+                            <Image src={item.icon} alt={`${item.name} icon`}  className={`transition-all
+                            ${isActive ? "" : "group-hover:brightness-0 group-hover:invert"}`}
                              width={24} height={24}  />
                             {item.name}
                         </Link>

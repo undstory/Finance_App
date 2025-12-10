@@ -23,7 +23,7 @@ export default function FilterSection() {
                 <div className="flex items-center gap-(--space-100) relative text-[length:var(--text-4-size)]">
                     <label className="text-[color:var(--grey-500)]">Category</label>
                     <select className="appearance-none border border-(--beige-500) text-(--grey-900) focus:outline-none py-(--space-150) pl-(--space-250) pr-(--space-500) rounded-lg text">
-                        <option>All transactions</option>
+                        <option className="py-(--space-150)">All transactions</option>
                         <option>Entertainment</option>
                         <option>Bills</option>
                         <option>Groceries</option>

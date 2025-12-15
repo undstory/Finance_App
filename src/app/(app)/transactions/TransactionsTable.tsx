@@ -1,3 +1,5 @@
+"uese client";
+
 import FilterSection from "./FilterSection";
 
 export default function TransactionsTable() {

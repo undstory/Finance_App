@@ -5,15 +5,15 @@ import Image from "next/image";
 
 interface SelectProps {
     label: string;
-    options: { value: string; label: string }[];
-    value: string;
+    options: string[];
+    // value: string;
     onChange: (value: string) => void;
     className?: string;
 }
 
 export default function Select({
     label, options,
-    value,
+    // value,
     onChange,
     className = ''
 }: SelectProps) {
@@ -24,11 +24,11 @@ export default function Select({
                 <label className="text-[color:var(--grey-500)]" htmlFor={id}>{label}</label>
                 ) : null
             }
-            <select id={id} value={value} onChange={e => onChange(e.target.value)} className="appearance-none border border-(--beige-500) text-(--grey-900) focus:outline-none py-(--space-150) pl-(--space-250) pr-(--space-500) rounded-lg text">
+            <select id={id} onChange={e => onChange(e.target.value)} className="appearance-none border border-(--beige-500) text-(--grey-900) focus:outline-none py-(--space-150) pl-(--space-250) pr-(--space-500) rounded-lg text">
                 {
                     options.map((option) => (
-                        <option key={option.value} value={option.value} className="py-[var(--space-150)]">
-                            {option.label}
+                        <option key={option} value={option} className="py-[var(--space-150)]">
+                            {option}
                         </option>
                     ))}
             </select>

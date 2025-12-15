@@ -15,37 +15,30 @@ export default function Sidebar () {
     const pathname = usePathname();
 
     const base = "flex items-center gap-4 rounded-r-lg leading-1.5 py-(--space-200) \
-        pl-[calc(var(--space-200)+32px)] transition-all -ml-12 mr-6"
+        pl-[calc(var(--space-200)+32px)] transition-all -ml-12 mr-6";
 
     return (
              <aside
-                className={[
-                    "h-dvh sticky top-0",
-                    "bg-(--grey-900) text-(--white)",
-                    "border-r border-(--grey-900)",
-                    "pt-(--space-500)",
-                    "pl-(--space-400)",
-                ].join(" ")}
+                className="h-dvh sticky top-0 bg-(--grey-900) text-(--white) border-r border-(--grey-900) pt-(--space-500) pl-(--space-400)"
              >
-                <Image src="/assets/images/logo-large.svg" alt="finance logo" width={121} height={21}
-                    className="
-                    pb-(--space-500)"
+                <Image src="/assets/images/logo-large.svg" alt="finance logo" width={121} height={21} className="pb-(--space-500)"
                 />
                 <nav
-                    className="pt-(--space-300)
-                        text-(--text-3-size)">
+                    className="pt-(--space-300) text-(--text-3-size)">
                     {
                     navigationItems.map((item) => {
                         const isActive = pathname === item.href;
                     return (
                         <Link key={item.name} href={item.href} className={
-                            `${base} ${
+                            `${base} group ${
                             isActive
                                 ? "bg-(--white) text-(--grey-900)"
-                                : "text-(--grey-300) bg-transparent"
+                                : "text-(--grey-300) bg-transparent hover:text-(--grey-100)"
                             } transition-colors`}
                         >
-                            {item.icon && <Image src={item.icon} alt={`${item.name} icon`} width={24} height={24}  />}
+                            <Image src={item.icon} alt={`${item.name} icon`}  className={`transition-all
+                            ${isActive ? "" : "group-hover:brightness-0 group-hover:invert"}`}
+                             width={24} height={24}  />
                             {item.name}
                         </Link>
                     )})

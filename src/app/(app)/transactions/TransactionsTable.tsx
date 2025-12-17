@@ -1,4 +1,4 @@
-"use client";
+
 
 import FilterSection from "./FilterSection";
 import { Table } from "./Table";

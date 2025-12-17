@@ -1,5 +1,8 @@
+
 export default function TableHeader() {
-    const headers = ["Recipient / Sender", "Category", "Transaction Date", "Amount"]
+
+
+
     return (
     <thead>
         <tr className="border-b border-(--grey-100) text-xs text-(--grey-500)">

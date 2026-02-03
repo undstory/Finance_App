@@ -1,10 +1,24 @@
 "use client";
 
 import { Select } from "@/components/ui/Select";
+import { SortByType } from "@/types/transactions";
 import Image from "next/image"
-export default function FilterSection() {
+
+
+type FilterSectionType = {
+    setSortBy: React.Dispatch<React.SetStateAction<SortByType>>
+}
+
+export default function FilterSection({ setSortBy }: FilterSectionType) {
+
     const transactionCategories = ["All transactions", "Entertainment", "Bills", "Groceries", "Dining Out", "Transportation", "Personal Care", "Education", "Lifestyle", "Shopping", "General"];
     const sortByOptions = ["Latest", "Oldest", "A to Z", "Z to A", "Highest", "Lowest"];
+
+    const handleSort = (value: SortByType) => {
+        setSortBy(value)
+    }
+
+
     return (
         <div className="flex justify-between items-center pb-(--space-300)">
             <div className="flex justify-end items-center relative">
@@ -13,7 +27,7 @@ export default function FilterSection() {
             </div>
 
             <div className="flex justify-end items-center gap-(--space-300)">
-                <Select options={sortByOptions} label="Sort By" onChange={(val) => console.log(val)} />
+                <Select options={sortByOptions} label="Sort By"  onChange={(val: string) => handleSort(val as SortByType)} />
                 <Select options={transactionCategories} label="Category" onChange={(val) => console.log(val)} />
             </div>
         </div>

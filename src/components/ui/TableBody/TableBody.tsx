@@ -1,12 +1,16 @@
-import { getTransactions } from "@/lib/transactions";
+
 import { formatDate } from "@/utils/formatDate";
 import { formatAmount } from "@/utils/formatAmount";
 import Image from "next/image";
+import { Transaction } from "@/types/transactions";
 
-export default async function TableBody() {
+type TableBodyType = {
+    transactions: Transaction[]
+}
 
-    const transactions = await getTransactions()
-    console.log("transactions", transactions)
+export default function TableBody({ transactions }: TableBodyType) {
+
+
     const tdbase = 'font-normal pb-(--space-150) pt-(--space-150)'
     return (
     <tbody>

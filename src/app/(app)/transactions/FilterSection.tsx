@@ -1,15 +1,16 @@
 "use client";
 
 import { Select } from "@/components/ui/Select";
-import { SortByType } from "@/types/transactions";
+import { CategoryType, SortByType } from "@/types/transactions";
 import Image from "next/image"
 
 
 type FilterSectionType = {
     setSortBy: React.Dispatch<React.SetStateAction<SortByType>>
+    setCategory: React.Dispatch<React.SetStateAction<CategoryType>>
 }
 
-export default function FilterSection({ setSortBy }: FilterSectionType) {
+export default function FilterSection({ setSortBy, setCategory }: FilterSectionType) {
 
     const transactionCategories = ["All transactions", "Entertainment", "Bills", "Groceries", "Dining Out", "Transportation", "Personal Care", "Education", "Lifestyle", "Shopping", "General"];
     const sortByOptions = ["Latest", "Oldest", "A to Z", "Z to A", "Highest", "Lowest"];
@@ -18,6 +19,9 @@ export default function FilterSection({ setSortBy }: FilterSectionType) {
         setSortBy(value)
     }
 
+    const handleCategory = (value: CategoryType) => {
+        setCategory(value)
+    }
 
     return (
         <div className="flex justify-between items-center pb-(--space-300)">
@@ -28,7 +32,7 @@ export default function FilterSection({ setSortBy }: FilterSectionType) {
 
             <div className="flex justify-end items-center gap-(--space-300)">
                 <Select options={sortByOptions} label="Sort By"  onChange={(val: string) => handleSort(val as SortByType)} />
-                <Select options={transactionCategories} label="Category" onChange={(val) => console.log(val)} />
+                <Select options={transactionCategories} label="Category" onChange={(val: string) => handleCategory(val as CategoryType)} />
             </div>
         </div>
     )

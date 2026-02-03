@@ -21,7 +21,7 @@ Users should be able to:
 
 - See all of the personal finance app data at-a-glance on the overview page
 - View all transactions on the transactions page with pagination for every ten transactions IN PROGRESS
-- Search, sort, and filter transactions
+- Search, sort, and filter transactions DONE
 - Create, read, update, delete (CRUD) budgets and saving pots
 - View the latest three transactions for each budget category created
 - View progress towards each pot

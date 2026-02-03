@@ -1,6 +1,6 @@
 'use client'
 
-import { Transaction, SortByType} from "@/types/transactions";
+import { Transaction, SortByType, CategoryType} from "@/types/transactions";
 import FilterSection from "./FilterSection";
 import { Table } from "./Table";
 import { useState, useMemo } from "react";
@@ -11,9 +11,17 @@ type TransactionTableType = {
 
 export default function TransactionsTable({ transactions }: TransactionTableType) {
     const [sortBy, setSortBy] = useState<SortByType>('Latest')
+    const [category, setCategory] = useState<CategoryType>('All transactions')
+
+      const filteredTransactions = useMemo(() => {
+        if(category === "All transactions") return transactions
+        return transactions.filter((t) => t.category === category
+        )
+
+    }, [transactions, category ])
 
     const sortedTransactions = useMemo(() => {
-        return [...transactions].sort((a, b) => {
+        return [...filteredTransactions].sort((a, b) => {
             if(sortBy === "A to Z") {
                 return a.payee.localeCompare(b.payee)
             } else if(sortBy === "Z to A") {
@@ -28,10 +36,10 @@ export default function TransactionsTable({ transactions }: TransactionTableType
             return new Date(b.date).getTime() - new Date(a.date).getTime()
         })
 
-    }, [transactions, sortBy ])
+    }, [filteredTransactions, sortBy ])
     return (
         <div className="mt-(--space-500) p-(--space-400) bg-white">
-            <FilterSection setSortBy={setSortBy} />
+            <FilterSection setSortBy={setSortBy} setCategory={setCategory} />
             <Table transactions={sortedTransactions} />
         </div>
     )

@@ -19,3 +19,16 @@ export type SortByType =
   | "Z to A"
   | "Highest"
   | "Lowest";
+
+export type CategoryType =
+  | "All transactions"
+  | "Entertainment"
+  | "Bills"
+  | "Groceries"
+  | "Dining Out"
+  | "Transportation"
+  | "Personal Care"
+  | "Education"
+  | "Lifestyle"
+  | "Shopping"
+  | "General";

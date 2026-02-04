@@ -1,7 +1,9 @@
 
-import { TableBody } from "@/components/ui/TableBody";
-import { TableHeader } from "@/components/ui/TableHeader";
+
 import { Transaction } from "@/types/transactions";
+import TableBody from "./TableBody";
+import TableHeader from "./TableHeader";
+
 
 type TableType = {
     transactions: Transaction[]
@@ -9,7 +11,7 @@ type TableType = {
 
 export const Table = ({ transactions } : TableType) => {
     return (
-        <table className="w-full table-fixed">
+        <table className="w-full table-fixed ">
             <TableHeader />
             <TableBody transactions={transactions} />
         </table>

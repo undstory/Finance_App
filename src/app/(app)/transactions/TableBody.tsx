@@ -15,7 +15,7 @@ export default function TableBody({ transactions }: TableBodyType) {
     return (
     <tbody>
         {transactions.map((el) => (
-        <tr key={el.id} className="border-b border-(--grey-100) text-xs text-(--grey-500) py-(--space-200)">
+        <tr key={el.id} className="border-b border-(--grey-100) last:border-b-0 text-xs text-(--grey-500) py-(--space-200)">
             <td className={`${tdbase} text-left pl-(--space-200) font-normal pr-(--space-400) w-[43%]`}>
                 {el.avatarUrl && <Image
                 src={el.avatarUrl}

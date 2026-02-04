@@ -5,15 +5,19 @@ import FilterSection from "./FilterSection";
 import { Table } from "./Table";
 import { useState, useMemo } from "react";
 import { sanity } from "@/utils/sanity";
+import PaginationSection from "./PaginationSection";
 
 type TransactionTableType = {
     transactions: Transaction[]
 }
 
+const ITEMS_PER_PAGE = 10;
+
 export default function TransactionsTable({ transactions }: TransactionTableType) {
     const [sortBy, setSortBy] = useState<SortByType>('Latest')
     const [category, setCategory] = useState<CategoryType>('All transactions')
     const [query, setQuery] = useState<string>("")
+    const [currentPage, setCurrentPage] = useState(1);
 
 
       const filteredByCategory = useMemo(() => {
@@ -45,10 +49,25 @@ export default function TransactionsTable({ transactions }: TransactionTableType
         })
 
     }, [filteredBySearch, sortBy ])
+
+    const paginatedTransactions = useMemo(() => {
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        return sortedTransactions.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    }, [sortedTransactions, currentPage]);
+
+    const handlePageChange = (startIndex: number) => {
+        setCurrentPage(Math.ceil((startIndex + 1) / ITEMS_PER_PAGE));
+    };
+
     return (
-        <div className="mt-(--space-500) p-(--space-400) bg-white">
+        <div className="mt-(--space-500) p-(--space-400) pb-6 bg-white">
             <FilterSection setSortBy={setSortBy} setCategory={setCategory} setQuery={setQuery} />
-            {sortedTransactions.length ? <Table transactions={sortedTransactions} /> : <div>Not found</div>}
+            {paginatedTransactions.length ? <Table transactions={paginatedTransactions} /> : <div>Not found</div>}
+            <PaginationSection
+                transactionsLength={sortedTransactions.length}
+                onPageChange={handlePageChange}
+                itemsPerPage={ITEMS_PER_PAGE}
+            />
         </div>
     )
 }

@@ -20,8 +20,8 @@ This is a solution to the [Personal finance app challenge on Frontend Mentor](ht
 Users should be able to:
 
 - See all of the personal finance app data at-a-glance on the overview page
-- View all transactions on the transactions page with pagination for every ten transactions IN PROGRESS
-- Search, sort, and filter transactions DONE
+- ~View all transactions on the transactions page with pagination for every ten transactions~ **DONE**
+- ~Search, sort, and filter transactions~ **DONE**
 - Create, read, update, delete (CRUD) budgets and saving pots
 - View the latest three transactions for each budget category created
 - View progress towards each pot
@@ -54,13 +54,13 @@ Users should be able to:
 
 ### What I want to learn/develop
 
-* Learn how to properly use Server Components vs Client Components and when each should be used
-* Learn how to separate data fetching (Server Components) from UI logic (Client Components) in Next.js
-* Improve working with strict typing to make UI logic safer and more predictable
-* Gain more confience in typing component props, utility functions and complex state combinations
-* Work with Prisma to fetch and shape data on the server site
-* Built reusable UI components using TailwindCSS
-* Learn how to balance Tailwind utility classes with readability and maintainability in larger components
+- Learn how to properly use Server Components vs Client Components and when each should be used
+- Learn how to separate data fetching (Server Components) from UI logic (Client Components) in Next.js
+- Improve working with strict typing to make UI logic safer and more predictable
+- Gain more confience in typing component props, utility functions and complex state combinations
+- Work with Prisma to fetch and shape data on the server site
+- Built reusable UI components using TailwindCSS
+- Learn how to balance Tailwind utility classes with readability and maintainability in larger components
 
 ### Continued development
 

@@ -26,8 +26,8 @@ Users should be able to:
 - View the latest three transactions for each budget category created
 - View progress towards each pot
 - Add money to and withdraw money from pots
-- View recurring bills and the status of each for the current month
-- Search and sort recurring bills
+- View recurring bills and the status of each for the current month **IN PROGRESS**
+- Search and sort recurring bills **IN PROGRESS**
 - Receive validation messages if required form fields aren't completed
 - Navigate the whole app and perform all actions using only their keyboard
 - View the optimal layout for the interface depending on their device's screen size
